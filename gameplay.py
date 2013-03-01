@@ -17,7 +17,7 @@ def jogo(jogador):
     carro.setMovimento(10)
     mov = carro.getMovimento()
     carro.setVelocidade(5)
-    vel= carro.getVelocidade()
+    velocidade = carro.getVelocidade()
 
     pygame.mixer.music.load("ACDC - Highway to hell.mp3")
     pygame.mixer.music.play()
@@ -33,9 +33,11 @@ def jogo(jogador):
                 elif event.key == K_a and xCarro > 40 :
                     direcmov = -mov
                 elif event.key == K_w:
-                    velocidade += vel
+                    velocidade += 5
+                elif event.key == K_s and velocidade > 0:
+                    velocidade -= 5
             xCarro += direcmov
-        if yPista < -2080:
+        if yPista >= -2320:
             yPista += velocidade
 
         tela.blit(pygame.image.load("pistascroll.png").convert(), (xPista,yPista))
